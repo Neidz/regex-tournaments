@@ -5,7 +5,7 @@
 </script>
 
 <header>
-	<h1>regex<span>tournaments</span></h1>
+	<div class="logo"><h1>regex<span>tournaments</span></h1></div>
 	<div class="icons">
 		<a href="/settings"><SettingsIcon /></a>
 		<a href="/leaderboard">
@@ -20,6 +20,7 @@
 <style lang="scss">
 	header {
 		width: 100%;
+		min-height: 50px;
 		display: flex;
 		flex-direction: row;
 	}
@@ -34,5 +35,10 @@
 		align-items: center;
 		margin-left: auto;
 		gap: 12px;
+	}
+	@media (max-width: 550px) {
+		.logo {
+			display: none;
+		}
 	}
 </style>
