@@ -4,6 +4,7 @@
 	import Header from '../lib/Header.svelte';
 	import ModeOptions from '$lib/ModeOptions.svelte';
 	import type { LevelType, ModeType } from '../types/options';
+	import Targets from '$lib/Targets.svelte';
 
 	let selectedMode: ModeType = 'links';
 	let selectedLevel: LevelType = 'medium';
@@ -12,6 +13,7 @@
 <div class="app">
 	<Header />
 	<ModeOptions {selectedMode} {selectedLevel} />
+	<Targets />
 </div>
 
 <style lang="scss">
