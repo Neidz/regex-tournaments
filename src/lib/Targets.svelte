@@ -51,6 +51,7 @@
 		flex-direction: column;
 		gap: 4px;
 	}
+
 	p {
 		font-size: 20px;
 	}
