@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type { LevelType, ModeType } from '../types/options';
+	import type { DifficultyLevel, ModeType } from '../types/options';
 
 	export let selectedMode: ModeType;
-	export let selectedLevel: LevelType;
+	export let selectedDifficulty: DifficultyLevel;
 
-	const modes: ModeType[] = ['links', 'lorem', 'lorem2'];
-	const levels: LevelType[] = ['easy', 'medium', 'hard'];
+	const modes: ModeType[] = ['links', 'html'];
+	const levels: DifficultyLevel[] = ['easy', 'medium', 'hard'];
 </script>
 
 <div class="wrapper">
@@ -23,9 +23,9 @@
 	<div class="level">
 		{#each levels as level}
 			<button
-				class={selectedLevel === level ? 'colored' : ''}
+				class={selectedDifficulty === level ? 'colored' : ''}
 				on:click={() => {
-					selectedLevel = level;
+					selectedDifficulty = level;
 				}}>{level}</button
 			>
 		{/each}

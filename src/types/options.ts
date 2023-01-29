@@ -1,3 +1,3 @@
-export type ModeType = 'links' | 'lorem' | 'lorem2';
+export type ModeType = 'links' | 'html';
 
-export type LevelType = 'easy' | 'medium' | 'hard';
+export type DifficultyLevel = 'easy' | 'medium' | 'hard';

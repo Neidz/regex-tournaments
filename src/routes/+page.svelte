@@ -3,16 +3,19 @@
 	import '../styles/fonts.svelte';
 	import Header from '../lib/Header.svelte';
 	import ModeOptions from '$lib/ModeOptions.svelte';
-	import type { LevelType, ModeType } from '../types/options';
+	import type { DifficultyLevel, ModeType } from '../types/options';
 	import Targets from '$lib/Targets.svelte';
+	import { generateLinks } from '../utils/regexTargetsGenerator/links';
 
 	let selectedMode: ModeType = 'links';
-	let selectedLevel: LevelType = 'medium';
+	let selectedDifficulty: DifficultyLevel = 'medium';
+
+	generateLinks('easy');
 </script>
 
 <div class="app">
 	<Header />
-	<ModeOptions {selectedMode} {selectedLevel} />
+	<ModeOptions {selectedMode} {selectedDifficulty} />
 	<Targets />
 </div>
 
