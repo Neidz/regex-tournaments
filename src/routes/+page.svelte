@@ -10,13 +10,13 @@
 	let selectedMode: ModeType = 'links';
 	let selectedDifficulty: DifficultyLevel = 'medium';
 
-	generateLinks('easy');
+	const links = generateLinks(selectedDifficulty, 5);
 </script>
 
 <div class="app">
 	<Header />
 	<ModeOptions {selectedMode} {selectedDifficulty} />
-	<Targets />
+	<Targets {links} />
 </div>
 
 <style lang="scss">

@@ -20,8 +20,9 @@ export interface LinkObject {
 	params: { name: string; value: string }[];
 }
 
-interface RegexLink {
+export interface RegexLink {
 	link: string;
+	formattedLink: string;
 	expectedWords: string[];
 }
 
@@ -106,13 +107,39 @@ const generateExpectedWords = (
 	return expectedWords;
 };
 
-const generateFormattedLink = (linkObject: LinkObject, paramValues: boolean): string => {
-	// https://github.com/sveltejs/realworld/tree/master/src
+const generatePlainLink = (linkObject: LinkObject): string => {
+	let link = '';
 
-	return '';
+	link += `${linkObject.protocol}://www.`;
+	linkObject.subdomains.forEach((el) => (link += `${el}.`));
+	link += `${linkObject.domain}.`;
+	link += linkObject.topLevelDomain;
+	linkObject.routes.forEach((el) => (link += `/${el}`));
+	if (linkObject.params.length > 0) {
+		link += '?';
+	}
+	linkObject.params.forEach((el) => (link += `${el.name}=${el.value}&`));
+	if (linkObject.params.length > 0) {
+		link = link.substring(0, link.length - 1);
+	}
+
+	return link;
 };
 
-export const generateLinks = (difficulty: DifficultyLevel): RegexLink[] => {
+const generateFormattedLink = (plainLink: string, expectedWords: string[]): string => {
+	let formattedLink = plainLink;
+
+	expectedWords.forEach((el) => {
+		formattedLink = formattedLink.replace(
+			new RegExp(`\\b${el}\\b`, 'g'),
+			`<span style="color: specifiedColor">${el}</span>`
+		);
+	});
+
+	return formattedLink;
+};
+
+export const generateLinks = (difficulty: DifficultyLevel, amountOfLinks: number): RegexLink[] => {
 	const difficultyToPoints: Record<DifficultyLevel, number> = {
 		easy: 2,
 		medium: 4,
@@ -128,10 +155,17 @@ export const generateLinks = (difficulty: DifficultyLevel): RegexLink[] => {
 		difficultyToPoints[difficulty]
 	);
 
-	const linkObject = generateLinkObject(parameters);
+	const links = [];
 
-	const formattedLink = generateFormattedLink(linkObject, paramValues);
-	const expectedWords = generateExpectedWords(linkObject, expectedWordsAmounts, paramValues);
+	for (let i = 0; i < amountOfLinks; i++) {
+		const linkObject = generateLinkObject(parameters);
+		const expectedWords = generateExpectedWords(linkObject, expectedWordsAmounts, paramValues);
 
-	return [{ link: formattedLink, expectedWords }];
+		const plainLink = generatePlainLink(linkObject);
+		const formattedLink = generateFormattedLink(plainLink, expectedWords);
+
+		links.push({ link: plainLink, formattedLink, expectedWords });
+	}
+
+	return links;
 };
