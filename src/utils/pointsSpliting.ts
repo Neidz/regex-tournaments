@@ -1,5 +1,6 @@
 import { generateRandomNumber } from './generateRandomNumber';
 
+// creates array with specified length and distributes points mostly randomly with initial elements having higher chance to be bigger
 export const splitPointsToArray = (arrLength: number, points: number): number[] => {
 	let pointsToSplit = points;
 	const arr = Array(arrLength).fill(0);
@@ -24,6 +25,7 @@ export const splitPointsToArray = (arrLength: number, points: number): number[] 
 	return arr;
 };
 
+// works the same as splitPointsToArray but specifiedArr provides max amounts of points that can be placed in specific places in array
 export const splitPointsToSpecifiedArray = (specifiedArr: number[], points: number): number[] => {
 	let pointsToSplit = points;
 	const arr = Array(specifiedArr.length).fill(0);
