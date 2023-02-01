@@ -6,9 +6,11 @@
 	import type { DifficultyLevel, ModeType } from '../types/options';
 	import Targets from '$lib/Targets.svelte';
 	import { generateLinks } from '../utils/regexTargetsGenerator/links';
+	import RegexInput from '$lib/RegexInput.svelte';
 
 	let selectedMode: ModeType = 'links';
 	let selectedDifficulty: DifficultyLevel = 'medium';
+	let inputValue: string = '';
 
 	const links = generateLinks(selectedDifficulty, 5);
 </script>
@@ -17,6 +19,7 @@
 	<Header />
 	<ModeOptions {selectedMode} {selectedDifficulty} />
 	<Targets {links} />
+	<RegexInput {inputValue} />
 </div>
 
 <style lang="scss">
