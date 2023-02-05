@@ -8,6 +8,7 @@
 	import { generateLinks } from '../utils/regexTargetsGenerator/links';
 	import RegexInput from '$lib/RegexInput.svelte';
 	import Timer from '$lib/Timer.svelte';
+	import LivePreview from '$lib/LivePreview.svelte';
 
 	let selectedMode: Mode = 'links';
 	let selectedDifficulty: DifficultyLevel = 'medium';
@@ -15,14 +16,16 @@
 	let timer: number = 0;
 	let status: Status = 'idle';
 
-	const links = generateLinks(selectedDifficulty, 5);
+	$: links = generateLinks(selectedDifficulty, 5);
+	$: console.log(status);
 </script>
 
 <div class="app">
 	<Header />
-	<ModeOptions {selectedMode} {selectedDifficulty} />
+	<ModeOptions bind:selectedMode bind:selectedDifficulty bind:status bind:timer />
 	<Targets {links} />
-	<RegexInput {inputValue} bind:status />
+	<LivePreview {links} {inputValue} />
+	<RegexInput bind:inputValue bind:status {links} />
 	<Timer bind:timer bind:status />
 </div>
 

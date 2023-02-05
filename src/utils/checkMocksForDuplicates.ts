@@ -13,6 +13,4 @@ export const checkMocksForDuplicates = (arrays: string[][]): void => {
 			duplicates.push(el);
 		}
 	});
-
-	console.log(duplicates);
 };

@@ -1,8 +1,10 @@
 <script lang="ts">
-	import type { DifficultyLevel, Mode } from '../types/options';
+	import type { DifficultyLevel, Mode, Status } from '../types/options';
 
 	export let selectedMode: Mode;
 	export let selectedDifficulty: DifficultyLevel;
+	export let status: Status;
+	export let timer: number;
 
 	const modes: Mode[] = ['links', 'html'];
 	const levels: DifficultyLevel[] = ['easy', 'medium', 'hard'];
@@ -15,6 +17,8 @@
 				class={selectedMode === mode ? 'colored' : ''}
 				on:click={() => {
 					selectedMode = mode;
+					status = 'idle';
+					timer = 0;
 				}}>{mode}</button
 			>
 		{/each}
@@ -26,6 +30,8 @@
 				class={selectedDifficulty === level ? 'colored' : ''}
 				on:click={() => {
 					selectedDifficulty = level;
+					status = 'idle';
+					timer = 0;
 				}}>{level}</button
 			>
 		{/each}

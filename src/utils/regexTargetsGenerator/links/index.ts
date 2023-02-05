@@ -126,10 +126,10 @@ const generatePlainLink = (linkObject: LinkObject): string => {
 	return link;
 };
 
-const generateFormattedLink = (plainLink: string, expectedWords: string[]): string => {
+export const generateFormattedLink = (plainLink: string, wordsArray: string[]): string => {
 	let formattedLink = plainLink;
 
-	expectedWords.forEach((el) => {
+	wordsArray.forEach((el) => {
 		formattedLink = formattedLink.replace(
 			new RegExp(`\\b${el}\\b`, 'g'),
 			`<span style="color: specifiedColor">${el}</span>`

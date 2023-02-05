@@ -11,17 +11,16 @@
 		}
 	};
 
-	$: if (status === 'playing') {
+	$: if (status === 'playing' && timer === 0) {
 		setTimeout(() => incrementTimer(), 1000);
 	}
+	$: minutes = Math.floor(timer / 60);
+	$: seconds = timer % 60 < 10 ? `0${timer % 60}` : timer % 60;
 </script>
 
 <div class="wrapper">
 	<p>current time:</p>
-	<div class="time">
-		<p class="minutes">{Math.floor(timer / 60)}</p>
-		<p class="seconds">{timer % 60}</p>
-	</div>
+	<p class={status === 'finished' ? 'colored' : ''}>{minutes}:{seconds}</p>
 	<button
 		on:click={() => {
 			status = 'idle';
@@ -35,16 +34,16 @@
 		display: flex;
 		flex-direction: row;
 		gap: 10px;
+		align-items: center;
 	}
-	.time {
-		display: flex;
-		flex-direction: row;
+	.colored {
+		color: var(--main-color);
 	}
 	p {
 		color: var(--text-color);
 		font-size: 20px;
 	}
-	.seconds {
-		font-size: 14px;
+	button {
+		font-size: 20px;
 	}
 </style>
