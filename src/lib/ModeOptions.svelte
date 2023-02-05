@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { DifficultyLevel, ModeType } from '../types/options';
+	import type { DifficultyLevel, Mode } from '../types/options';
 
-	export let selectedMode: ModeType;
+	export let selectedMode: Mode;
 	export let selectedDifficulty: DifficultyLevel;
 
-	const modes: ModeType[] = ['links', 'html'];
+	const modes: Mode[] = ['links', 'html'];
 	const levels: DifficultyLevel[] = ['easy', 'medium', 'hard'];
 </script>
 

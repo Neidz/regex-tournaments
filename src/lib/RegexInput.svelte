@@ -1,5 +1,8 @@
 <script lang="ts">
+	import type { Status } from '../types/options';
+
 	export let inputValue: string;
+	export let status: Status;
 </script>
 
 <div class="wrapper">
@@ -7,7 +10,11 @@
 		type="text"
 		placeholder="enter your regex here"
 		bind:value={inputValue}
-		on:input={() => console.log(inputValue)}
+		on:input={() => {
+			if (status !== 'playing') {
+				status = 'playing';
+			}
+		}}
 	/>
 </div>
 
