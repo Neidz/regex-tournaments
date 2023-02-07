@@ -6,7 +6,7 @@
 	export let status: Status;
 	export let timer: number;
 
-	const modes: Mode[] = ['links', 'html'];
+	const modes: Mode[] = ['links'];
 	const levels: DifficultyLevel[] = ['easy', 'medium', 'hard'];
 </script>
 

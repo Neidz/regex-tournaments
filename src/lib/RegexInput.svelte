@@ -7,17 +7,13 @@
 	export let status: Status;
 	export let links: RegexLink[];
 
-	$: if (status === 'idle') {
-		inputValue = '';
-	} else {
+	$: if (status !== 'idle') {
 		try {
 			const isFinished = () => {
 				const regex = new RegExp(inputValue);
 
 				return links.every((el) => {
 					const matchedWords = el.link.match(regex)?.slice(1);
-					console.log(matchedWords);
-					console.log(el.expectedWords);
 
 					if (!matchedWords || !comapreArrays(el.expectedWords, matchedWords)) {
 						return false;
@@ -38,7 +34,7 @@
 		<p>/</p>
 		<input
 			type="text"
-			placeholder="enter your regex here"
+			placeholder="enter regex that captures all blue words in all links"
 			bind:value={inputValue}
 			on:input={() => {
 				if (status === 'idle') {

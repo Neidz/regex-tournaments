@@ -31,7 +31,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 4px;
-		margin-top: 30px;
+		margin-top: 70px;
 	}
 
 	p {

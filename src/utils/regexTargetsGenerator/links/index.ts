@@ -58,11 +58,12 @@ const generateLinkObject = (parameters: number[]): LinkObject => {
 
 	const linkParams = () => {
 		const arr = [];
-		const randomQueryParam = queryParams[generateRandomNumber(0, queryParams.length - 1)];
-		const randomQueryValue = queryParamValues[generateRandomNumber(0, queryParamValues.length - 1)];
+		const randomQueryParam = () => queryParams[generateRandomNumber(0, queryParams.length - 1)];
+		const randomQueryValue = () =>
+			queryParamValues[generateRandomNumber(0, queryParamValues.length - 1)];
 
 		for (let i = 0; i < parameters[2]; i++) {
-			arr.push({ name: randomQueryParam, value: randomQueryValue });
+			arr.push({ name: randomQueryParam(), value: randomQueryValue() });
 		}
 
 		return arr;

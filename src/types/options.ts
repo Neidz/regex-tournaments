@@ -1,4 +1,4 @@
-export type Mode = 'links' | 'html';
+export type Mode = 'links';
 
 export type DifficultyLevel = 'easy' | 'medium' | 'hard';
 

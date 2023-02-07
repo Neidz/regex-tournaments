@@ -17,7 +17,6 @@
 	let status: Status = 'idle';
 
 	$: links = generateLinks(selectedDifficulty, 5);
-	$: console.log(status);
 </script>
 
 <div class="app">
@@ -26,7 +25,7 @@
 	<Targets {links} />
 	<LivePreview {links} {inputValue} />
 	<RegexInput bind:inputValue bind:status {links} />
-	<Timer bind:timer bind:status />
+	<Timer bind:timer bind:status bind:inputValue />
 </div>
 
 <style lang="scss">
@@ -41,5 +40,6 @@
 		min-height: 100vh;
 		background-color: var(--bg-color);
 		padding: 32px;
+		box-sizing: border-box;
 	}
 </style>

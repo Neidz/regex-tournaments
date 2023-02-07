@@ -3,6 +3,7 @@
 
 	export let timer: number;
 	export let status: Status;
+	export let inputValue: string;
 
 	const incrementTimer = () => {
 		if (status === 'playing') {
@@ -24,6 +25,7 @@
 	<button
 		on:click={() => {
 			status = 'idle';
+			inputValue = '';
 			timer = 0;
 		}}>restart</button
 	>
