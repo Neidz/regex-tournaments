@@ -15,9 +15,11 @@
 		display: flex;
 		flex-direction: column;
 		gap: 4px;
+		max-width: 100%;
 	}
 
 	p {
 		font-size: 20px;
+		word-break: break-all;
 	}
 </style>

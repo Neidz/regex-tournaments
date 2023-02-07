@@ -36,5 +36,6 @@
 
 	p {
 		font-size: 20px;
+		word-break: break-all;
 	}
 </style>
